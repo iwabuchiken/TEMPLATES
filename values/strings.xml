@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, CR4Activity!</string>
+    <string name="app_name">CR4</string>
+
+    <!-- Generic items -->
+    <string name="generic_bt_ok">OK</string>
+    <string name="generic_bt_cancel">キャンセル</string>
+    <string name="generic_tv_confirm">確認</string>
+    <string name="generic_tv_menu">メニュー</string>
+    <string name="generic_tv_register">登録</string>
+    <string name="generic_tv_edit">編集</string>
+    <string name="generic_tv_delete">削除</string>
+    <string name="generic_tv_back">戻る</string>
+    
+    <!-- v1.xml -->
+	    <string name="v1_bt_play">Play</string>
+		<string name="v1_bt_stop">Stop</string>
+		
+		<string name="v1_MI_texts">Texts</string>
+		<string name="v1_MI_web_view">Open web</string>
+		<string name="v1_MI_get_texts">Get texts</string>
+		<string name="v1_MI_speed_control">Speed control</string>
+		
+	<!-- /v1.xml -->
+	
+	<!-- dlg_get_texts_list.xml -->
+		<string name="dlg_texts_list_tv_title">Choose text</string>
+	
+	<!-- /dlg_get_texts_list.xml -->
+		<string name="v1_opt_menu_texts_list">リスト</string>
+		<string name="v1_opt_menu_refresh_list">リストの更新</string>
+		
+		<string name="dlg_confirm_quit_title">確認</string>
+		<string name="dlg_confirm_quit_message">アプリを終了しますか？</string>
+		<string name="dlg_confirm_quit_quit">終了</string>
+		<string name="dlg_confirm_quit_cancel">いいえ</string>
+		
+	<!-- optionmenu.xml -->
+		<string name="main_menu_register_texts">テキスト登録</string>
+		<string name="main_menu_choose_text">テキスト選択</string>
+		<string name="main_menu_history">履歴</string>
+
+	<!-- dlg_register_texts.xml -->
+		<string name="dlg_register_texts_title">テキスト登録</string>
+		<string name="dlg_register_texts_tv_text">テキスト</string>
+		<string name="dlg_register_texts_tv_url">URL</string>
+		<string name="dlg_register_texts_tv_genre">ジャンル</string>
+		<string name="dlg_register_texts_tv_memo">メモ</string>
+		
+</resources>
