@@ -1328,4 +1328,158 @@ public class Methods {
 		
 	}//private static void showTime(int counter)
 
+	public static List<String> getTableList(Activity actv) {
+		DBUtils dbu = new DBUtils(actv, MainActv.dbName);
+		
+		SQLiteDatabase rdb = dbu.getReadableDatabase();
+
+		//=> source: http://stackoverflow.com/questions/4681744/android-get-list-of-tables : "Just had to do the same. This seems to work:"
+		String q = "SELECT name FROM " + "sqlite_master"+
+						" WHERE type = 'table' ORDER BY name";
+		
+		Cursor c = null;
+		try {
+			c = rdb.rawQuery(q, null);
+			
+			// Log
+			Log.d("Methods.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", "c.getCount(): " + c.getCount());
+
+		} catch (Exception e) {
+			// Log
+			Log.d("Methods.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", "Exception => " + e.toString());
+		}
+		
+		// Table names list
+		List<String> tableList = new ArrayList<String>();
+		
+		// Log
+		if (c != null) {
+			c.moveToFirst();
+			
+			for (int i = 0; i < c.getCount(); i++) {
+				//
+				tableList.add(c.getString(0));
+				
+				// Log
+				Log.d("Methods.java"
+						+ "["
+						+ Thread.currentThread().getStackTrace()[2]
+								.getLineNumber() + "]", "c.getString(0): " + c.getString(0));
+				
+				
+				// Next
+				c.moveToNext();
+				
+			}//for (int i = 0; i < c.getCount(); i++)
+
+		} else {//if (c != null)
+			Log.d("Methods.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", "c => null");
+		}//if (c != null)
+
+		rdb.close();
+		
+		return tableList;
+		
+	}//public static List<String> getTableList()
+
+	public static String[] get_column_list(Activity actv, String dbName, String tableName) {
+		/*********************************
+		 * 1. Set up db
+		 * 2. Cursor null?
+		 * 3. Get names
+		 * 
+		 * 4. Close db
+		 * 5. Return
+		 *********************************/
+		DBUtils dbu = new DBUtils(actv, dbName);
+		
+		SQLiteDatabase rdb = dbu.getReadableDatabase();
+
+		//=> source: http://stackoverflow.com/questions/4681744/android-get-list-of-tables : "Just had to do the same. This seems to work:"
+		String q = "SELECT name FROM " + tableName;
+		
+		/*********************************
+		 * 2. Cursor null?
+		 *********************************/
+		Cursor c = null;
+		
+		try {
+			c = rdb.rawQuery(q, null);
+			
+			// Log
+			Log.d("Methods.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", "c.getCount(): " + c.getCount());
+
+		} catch (Exception e) {
+			// Log
+			Log.d("Methods.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", "Exception => " + e.toString());
+			
+			rdb.close();
+			
+			return null;
+		}
+		
+		/*********************************
+		 * 3. Get names
+		 *********************************/
+		String[] column_names = c.getColumnNames();
+		
+		/*********************************
+		 * 4. Close db
+		 *********************************/
+		rdb.close();
+		
+		/*********************************
+		 * 5. Return
+		 *********************************/
+		return column_names;
+		
+//		return null;
+	}//public static String[] get_column_list(Activity actv, String tableName)
+
+	public static void confirm_quit(Activity actv, int keyCode) {
+		
+		// TODO 自動生成されたメソッド・スタブ
+		if (keyCode==KeyEvent.KEYCODE_BACK) {
+			
+			AlertDialog.Builder dialog=new AlertDialog.Builder(actv);
+			
+	        dialog.setTitle("アプリの終了");
+	        dialog.setMessage("アプリを終了しますか？");
+	        
+	        dialog.setPositiveButton("終了",new DialogListener(actv, dialog, 0));
+	        dialog.setNegativeButton("キャンセル",new DialogListener(actv, dialog, 1));
+	        
+	        dialog.create();
+	        dialog.show();
+			
+		}//if (keyCode==KeyEvent.KEYCODE_BACK)
+		
+	}//public static void confirm_quit(Activity actv, int keyCode)
+
+	public static String join(String[] data, String separator) {
+		
+		StringBuilder sb = new StringBuilder();
+		
+		int i;
+		
+		for (i = 0; i < data.length - 1; i++) {
+			
+			sb.append(data[i] + separator);
+		}
+		
+		sb.append(data[i]);
+		
+		return sb.toString();
+	}
+
 }//public class Methods

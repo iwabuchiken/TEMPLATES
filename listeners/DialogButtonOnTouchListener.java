@@ -1,5 +1,6 @@
-package gt2.listeners;
+package sl2.listeners;
 
+import sl2.utils.Methods;
 import android.app.Activity;
 import android.app.Dialog;
 import android.graphics.Color;
@@ -27,38 +28,43 @@ public class DialogButtonOnTouchListener implements OnTouchListener {
 		this.actv = actv;
 	}
 
-	@Override
+//	@Override
 	public boolean onTouch(View v, MotionEvent event) {
 		// TODO 自動生成されたメソッド・スタブ
-//		Methods.DialogTags tag_name = (Methods.DialogTags) v.getTag();
+		Methods.DialogButtonTags tag_name = (Methods.DialogButtonTags) v.getTag();
 		
 		switch (event.getActionMasked()) {
-//		case MotionEvent.ACTION_DOWN:
-//				switch (tag_name) {
-//				
-//				case dlg_generic_dismiss:
-//					//
-//					v.setBackgroundColor(Color.GRAY);
-//					
-//					break;
-//				}//switch (tag_name)
+		case MotionEvent.ACTION_DOWN:
+				switch (tag_name) {
+				
+				case dlg_generic_dismiss:
+				case dlg_generic_dismiss_second_dialog:
+					
+					//
+					v.setBackgroundColor(Color.GRAY);
+					
+					break;
+				}//switch (tag_name)
 		
-//			break;//case MotionEvent.ACTION_DOWN:
-//			
-//		case MotionEvent.ACTION_UP:
-//			switch (tag_name) {
-//
-//			case dlg_generic_dismiss:
-//					//
-//					v.setBackgroundColor(Color.WHITE);
-//					
-//					break;
-//				}//switch (tag_name)
+			break;//case MotionEvent.ACTION_DOWN:
+			
+		case MotionEvent.ACTION_UP:
+			switch (tag_name) {
+
+			case dlg_generic_dismiss:
+			case dlg_generic_dismiss_second_dialog:
+				
+					//
+					v.setBackgroundColor(Color.WHITE);
+					
+					break;
+				}//switch (tag_name)
 		
-//			break;//case MotionEvent.ACTION_UP:
+			break;//case MotionEvent.ACTION_UP:
 		
 		}//switch (event.getActionMasked())
+		
 		return false;
-	}
+	}//public boolean onTouch(View v, MotionEvent event)
 
-}
+}//public class DialogButtonOnTouchListener implements OnTouchListener

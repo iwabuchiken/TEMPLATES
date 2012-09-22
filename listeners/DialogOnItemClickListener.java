@@ -1,5 +1,6 @@
-package gt2.listeners;
+package sl2.listeners;
 
+import sl2.utils.Methods;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
@@ -32,7 +33,7 @@ public class DialogOnItemClickListener implements OnItemClickListener {
 		
 	}//public DialogOnItemClickListener(Activity actv, Dialog dlg)
 
-	@Override
+//	@Override
 	public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
 		/*----------------------------
 		 * Steps
@@ -41,17 +42,17 @@ public class DialogOnItemClickListener implements OnItemClickListener {
 		 * 3. Switching
 			----------------------------*/
 		
-//		Methods.DialogOnItemClickTags tag = (Methods.DialogOnItemClickTags) parent.getTag();
-//		
-//		vib.vibrate(Methods.vibLength_click);
+		Methods.DialogItemTags tag = (Methods.DialogItemTags) parent.getTag();
+		
+		vib.vibrate(Methods.vibLength_click);
 		
 		/*----------------------------
 		 * 3. Switching
 			----------------------------*/
-//		switch (tag) {
+		switch (tag) {
 		
 			
-//		}//switch (tag)
+		}//switch (tag)
 		
 	}//public void onItemClick(AdapterView<?> parent, View v, int position, long id)
 }
