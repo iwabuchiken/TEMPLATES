@@ -1551,4 +1551,47 @@ public class Methods {
 		
 	}//private void restore_db()
 
+    private void drop_table(Activity actv, String dbName, String tableName) {
+    	// Setup db
+		DBUtils dbu = new DBUtils(actv, dbName);
+		
+		SQLiteDatabase wdb = dbu.getWritableDatabase();
+		
+		boolean res = 
+				dbu.dropTable(actv, wdb, tableName);
+		
+		if (res == true) {
+			// Log
+			Log.d("MainActv.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", "Table dropped: " + tableName);
+		} else {//if (res == true)
+
+			// Log
+			Log.d("MainActv.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", "Drop table => Failed: " + tableName);
+			
+		}//if (res == true)
+		
+
+		wdb.close();
+		
+		
+	}//private void drop_table(String tableName)
+
+	public static boolean is_numeric(String str) {
+		
+		// REF=> http://www.coderanch.com/t/401142/java/java/check-if-String-value-numeric # Hurkpan Potgieter Greenhorn
+		String regex = "((-|\\+)?[0-9]+(\\.[0-9]+)?)+";
+		
+//		Pattern p = Pattern.compile( "([0-9]*)\\.[0]" );
+		Pattern p = Pattern.compile(regex);
+
+		Matcher m = p.matcher(str);
+		
+		return m.matches(); //TRUE
+		
+	}//public static boolean is_numeric(String str)
+	
 }//public class Methods
